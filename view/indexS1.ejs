@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Server 1</title>
+</head>
+<body>
+    <h1>Localhost de Server 1</h1>
+
+    <button id="boton">Recibir Texto</button>
+
+    <div id="contenedor"></div>
+
+    <script>
+        let boton = document.querySelector('#boton');
+        let contenedor = document.querySelector('#contenedor');
+        boton.addEventListener('click', () => {
+            fetch('http://localhost:3002/access')
+                .then(response => response.text())
+                .then(data => {
+                    console.log(data);
+                    contenedor.innerHTML = data;
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+        });
+    </script>
+</body>
+</html>
